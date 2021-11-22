@@ -1,12 +1,21 @@
 <html>
   <head>
+    <style>
+      * {
+	  font-family: courier new;
+      }
+      
+      .text-center {
+	  text-align: center;
+      }
+    </style>
   </head>
 
   <body>
 
     <h1>Report for {{target}}</h1>
     <h2>Web sites:</h2>
-    <table>
+    <table border="1" cellspacing="0" cellpadding="4">
       <thead>
 	<th>URL</th>
 	<th>Server</th>
@@ -15,9 +24,9 @@
       <tbody>
 	{% for site in sites %}
 	<tr>
-	  <td>{{ site.url }}</td>
-	  <td>{{ site.server }}</td>
-	  <td>{{ site.cms }}</td>
+	  <td><a href="{{ site.url }}">{{ site.url }}</a></td>
+	  <td class="text-center">{{ site.server }}</td>
+	  <td class="text-center">{{ site.cms }}</td>
 	</tr>
 	{% endfor %}
       </tbody>

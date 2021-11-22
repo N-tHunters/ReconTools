@@ -13,7 +13,7 @@ sublist3r -d $1 -o $base_dir/subdomains.txt >/dev/null
 echo "[+] Subdomains scan finished"
 
 echo "[o] Finding subdomains with HTTP and HTTPS"
-cat $base_dir/subdomains.txt | httprobe-bin | sort -u > $base_dir/httpsites.txt
+cat $base_dir/subdomains.txt | httprobe-bin | sort -u | ./clear_http.py > $base_dir/httpsites.txt
 echo "[+] Subdomains with HTTP and HTTPS collected"
 
 echo "[o] Identifying common CMS"
