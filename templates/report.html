@@ -1,0 +1,28 @@
+<html>
+  <head>
+  </head>
+
+  <body>
+
+    <h1>Report for {{target}}</h1>
+    <h2>Web sites:</h2>
+    <table>
+      <thead>
+	<th>URL</th>
+	<th>Server</th>
+	<th>CMS</th>
+      </thead>
+      <tbody>
+	{% for site in sites %}
+	<tr>
+	  <td>{{ site.url }}</td>
+	  <td>{{ site.server }}</td>
+	  <td>{{ site.cms }}</td>
+	</tr>
+	{% endfor %}
+      </tbody>
+    </table>
+    
+  </body>
+
+</html>
