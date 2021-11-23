@@ -31,6 +31,23 @@
 	{% endfor %}
       </tbody>
     </table>
+
+
+    <h2>Wordpress users:</h2>
+    <table border="1" cellspacing="0" cellpadding="4">
+      <thead>
+	<th>URL</th>
+	<th>Username</th>
+      </thead>
+      <tbody>
+	{% for user in wp_users %}
+	<tr>
+	  <td><a href="{{ user.site }}">{{ user.site }}</a></td>
+	  <td class="text-center">{{ user.username }}</td>
+	</tr>
+	{% endfor %}
+      </tbody>
+    </table>
     
   </body>
 
