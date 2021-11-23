@@ -24,7 +24,7 @@
       <tbody>
 	{% for site in sites %}
 	<tr>
-	  <td><a href="{{ site.url }}">{{ site.url }}</a></td>
+	  <td><a href="{{ site.url }}">{{ site.url }}</a>{% if site.redirect != '' %} ➔ <a href="{{ site.redirect }}">{{ site.redirect }}</a>{% endif %}</td>
 	  <td class="text-center">{{ site.server }}</td>
 	  <td class="text-center">{{ site.cms }}</td>
 	</tr>

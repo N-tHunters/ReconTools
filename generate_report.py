@@ -8,6 +8,7 @@ import csv
 base_dir = sys.argv[1]
 server_version_file = os.path.join(base_dir, 'serverversions.csv')
 cms_file = os.path.join(base_dir, 'cms.csv')
+redirects_file = os.path.join(base_dir, 'redirects.csv')
 
 sites = dict()
 with open(server_version_file) as f:
@@ -27,10 +28,19 @@ with open(cms_file) as f:
             sites[url] = dict()
         sites[url]['cms'] = cms
 
+with open(redirects_file) as f:
+    reader = csv.reader(f)
+    for row in reader:
+        url, redirect = row
+        if sites.get(url) is None:
+            sites[url] = dict()
+        sites[url]['redirect'] = redirect
+
 
 sites_list = []
 for url in sites:
-    sites_list.append({'url': url, 'server': sites[url]['server'], 'cms': sites[url]['cms']})
+    sites_list.append({'url': url, 'server': sites[url].get('server', ''),
+                       'cms': sites[url].get('cms', ''), 'redirect': sites[url].get('redirect', '')})
 
 
 template_loader = jinja2.FileSystemLoader("./templates")

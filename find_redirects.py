@@ -13,7 +13,7 @@ with open(sys.argv[1]) as f:
 
 for url in urls:
     redirect = ''
-    response = requests.get(url, follow_redirects=False, verify=False)
+    response = requests.get(url, allow_redirects=False, verify=False)
     if response.status_code == 301:
         redirect = response.headers.get('Location', '')
     print(f'"{url}","{redirect}"')
