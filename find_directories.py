@@ -4,11 +4,15 @@ from os import system
 import os
 import sys
 
+if len(sys.argv) != 3:
+	print(f'Usage: {sys.argv[0]} <url> <wordlist>')
+	exit(-1)
+
 if not os.path.isdir('tmp'):
 	os.mkdir('tmp')
 
-wordlist_location = sys.args[2] # '/usr/share/seclists/Discovery/Web-Content/common.txt'
-url = sys.args[1]
+wordlist_location = sys.argv[2] # '/usr/share/seclists/Discovery/Web-Content/common.txt'
+url = sys.argv[1]
 filename = 'gobuster_output'
 
 system(f'gobuster dir -w {wordlist_location} -u {url} -o tmp/{filename} > /dev/null 2> /dev/null')
